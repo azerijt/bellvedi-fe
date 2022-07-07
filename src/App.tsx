@@ -1,7 +1,11 @@
-import { greet } from "./utils/greet";
+import ShortestPath from "./ShortestPath";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return(
+  <div>
+   <ShortestPath />
+   </div>
+  )
 }
 
 export default App;
