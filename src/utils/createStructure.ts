@@ -1,4 +1,4 @@
-
+import { populateGraph, calculateShortest } from "./populateGraph.js";
 
 interface ShortestPathProps {
   from_tiploc: string;
@@ -6,14 +6,13 @@ interface ShortestPathProps {
   distance: number;
 }
 interface StationRoutesProps {
-  from_tiploc: string;
-  neighbors: {
+  [from_tiploc: string]: {
     to_tiploc: string;
     distance: number;
   };
 }
 
-function createObject(allStations: ShortestPathProps[]): {} {
+function createObject(allStations: ShortestPathProps[]): any {
   let stations = {};
   const start = allStations[0].from_tiploc;
 
@@ -26,18 +25,35 @@ function createObject(allStations: ShortestPathProps[]): {} {
   return stationObject;
 }
 
-export function createStructure(allStations: ShortestPathProps[]): {} {
+// export function createStructure(allStations: ShortestPathProps[]): unknown {
+//   const unique = [
+//     ...new Set(allStations.map((station) => station.from_tiploc)),
+//   ];
+//   const nodes = [];
+//   for (const i of unique) {
+//     const startStationRoutes = allStations.filter(
+//       (station) => station.from_tiploc === i
+//     );
+//     const stationAndRoutes = createObject(startStationRoutes);
+//     nodes.push(stationAndRoutes);
+//   }
+
+//   return nodes;
+// }
+
+export function createStructure(allStations: ShortestPathProps[]): unknown {
   const unique = [
     ...new Set(allStations.map((station) => station.from_tiploc)),
   ];
-  let nodes = [];
+  const graph = new Object();
   for (const i of unique) {
     const startStationRoutes = allStations.filter(
       (station) => station.from_tiploc === i
     );
     const stationAndRoutes = createObject(startStationRoutes);
-    nodes.push(stationAndRoutes);
-  }
 
-  return nodes;
+    Object.assign(graph, stationAndRoutes);
+  }
+  console.log(graph);
+  return graph;
 }
