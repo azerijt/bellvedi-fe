@@ -1,16 +1,16 @@
-import { populateGraph, calculateShortest } from "./populateGraph.js";
+
 
 interface ShortestPathProps {
   from_tiploc: string;
   to_tiploc: string;
   distance: number;
 }
-interface StationRoutesProps {
-  [from_tiploc: string]: {
-    to_tiploc: string;
-    distance: number;
-  };
-}
+// interface StationRoutesProps {
+//   [from_tiploc: string]: {
+//     to_tiploc: string;
+//     distance: number;
+//   };
+// }
 
 function createObject(allStations: ShortestPathProps[]): any {
   let stations = {};
@@ -25,21 +25,6 @@ function createObject(allStations: ShortestPathProps[]): any {
   return stationObject;
 }
 
-// export function createStructure(allStations: ShortestPathProps[]): unknown {
-//   const unique = [
-//     ...new Set(allStations.map((station) => station.from_tiploc)),
-//   ];
-//   const nodes = [];
-//   for (const i of unique) {
-//     const startStationRoutes = allStations.filter(
-//       (station) => station.from_tiploc === i
-//     );
-//     const stationAndRoutes = createObject(startStationRoutes);
-//     nodes.push(stationAndRoutes);
-//   }
-
-//   return nodes;
-// }
 
 export function createStructure(allStations: ShortestPathProps[]): unknown {
   const unique = [

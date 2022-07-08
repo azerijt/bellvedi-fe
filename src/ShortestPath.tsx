@@ -22,13 +22,12 @@ export default function ShortestPath(): JSX.Element {
 
   const nodes = createStructure(allStations);
   const graph = populateGraph(nodes);
-  //console.log(graph)
 
   //const shortest = calculateShortest(graph, start, end)
 
   return (
     <div>
-      <p>help</p>
+      <h1>Shortest Routes</h1>
     </div>
   );
 }
